@@ -1,6 +1,6 @@
 import { defineChain } from "viem";
 import { cookieStorage, createConfig, createStorage, http } from "wagmi";
-import { bscTestnet, scrollSepolia } from "wagmi/chains";
+import { bscTestnet, scrollSepolia, taikoHekla } from "wagmi/chains";
 import { injected } from "wagmi/connectors";
 
 const bitTorrent = defineChain({
@@ -21,7 +21,7 @@ const bitTorrent = defineChain({
 });
 
 export const config = createConfig({
-  chains: [scrollSepolia, bitTorrent, bscTestnet],
+  chains: [scrollSepolia, bitTorrent, bscTestnet, taikoHekla],
   connectors: [injected()],
   ssr: true,
   storage: createStorage({
@@ -31,6 +31,7 @@ export const config = createConfig({
     [scrollSepolia.id]: http(),
     [bitTorrent.id]: http(),
     [bscTestnet.id]: http(),
+    [taikoHekla.id]: http(),
   },
 });
 
